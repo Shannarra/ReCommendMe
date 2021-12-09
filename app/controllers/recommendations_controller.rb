@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class RecommendationsController < ApplicationController
-  before_action :set_recommendation, only: [:update, :show]
+  before_action :set_recommendation, only: %i[update show]
 
   def index
     render json: Recommendation.all.with_attached_cv.order(:id)
@@ -43,13 +45,14 @@ class RecommendationsController < ApplicationController
   end
 
   private
+
   def recommendation_params
     params.permit(:by, :cv)
   end
 
   def set_recommendation
     @recommendation = Recommendation.find(params[:id])
-    rescue
-      @recommendation = nil
+  rescue StandardError
+    @recommendation = nil
   end
 end

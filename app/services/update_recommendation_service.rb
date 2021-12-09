@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UpdateRecommendationService
   def initialize(rec, params)
     @rec = rec

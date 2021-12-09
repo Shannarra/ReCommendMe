@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RecommendationSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
 
@@ -13,7 +15,7 @@ class RecommendationSerializer < ActiveModel::Serializer
     object.cv.blob.attributes
           .slice('filename', 'byte_size')
           .merge(url: cv_url)
-          .tap{|attr| attr['name'] = attr.delete('filename')}
+          .tap { |attr| attr['name'] = attr.delete('filename') }
   end
 
   def cv_url
@@ -21,8 +23,8 @@ class RecommendationSerializer < ActiveModel::Serializer
   end
 
   private
+
   def cv_path(id:)
     ActiveStorage::Blob.service.send(:path_for, Recommendation.find(id).cv.key)
   end
-
 end
