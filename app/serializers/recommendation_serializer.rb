@@ -15,7 +15,10 @@ class RecommendationSerializer < ActiveModel::Serializer
     object.cv.blob.attributes
           .slice('filename', 'byte_size')
           .merge(url: cv_url)
-          .tap { |attr| attr['name'] = attr.delete('filename') }
+          .tap do |attr|
+            attr['name'] = attr.delete('filename')
+            attr['size_b'] = attr.delete('byte_size')
+          end
   end
 
   def cv_url

@@ -1,10 +1,15 @@
 # frozen_string_literal: true
 
 class RecommendationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_recommendation, only: %i[update show]
 
   def index
-    render json: Recommendation.all.with_attached_cv.order(:id)
+    # if current_user.nil?
+    #   render json: "WTF"
+    # else
+    render json: Recommendation.for_user(id: current_user&.id).with_attached_cv.order(:id)
+    # end
   end
 
   def show
@@ -47,7 +52,7 @@ class RecommendationsController < ApplicationController
   private
 
   def recommendation_params
-    params.permit(:by, :cv)
+    params.permit(:by, :cv, :user_id)
   end
 
   def set_recommendation

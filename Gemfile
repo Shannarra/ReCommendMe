@@ -7,6 +7,10 @@ ruby '2.6.8'
 
 gem 'active_model_serializers'
 
+gem 'devise'
+gem 'devise-jwt'
+gem 'rack-cors'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Use postgresql as the database for Active Record

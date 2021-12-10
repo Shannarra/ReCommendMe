@@ -6,3 +6,4 @@ AllCops:
     - './bin/*'
     - './db/*'
     - './db/migrate/*'
+    - './config/initializers/*'
