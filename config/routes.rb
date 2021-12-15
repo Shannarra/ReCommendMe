@@ -10,11 +10,11 @@ Rails.application.routes.draw do
                  }
 
       resources :users do
+        get '/users/:user_id', to: 'sessions#show'
         member do
           resources :recommendations, only: %i[index create update show]
         end
       end
-      get '/me', to: 'members#show'
     end
   end
 end

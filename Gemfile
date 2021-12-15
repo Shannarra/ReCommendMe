@@ -9,6 +9,7 @@ gem 'active_model_serializers'
 
 gem 'devise'
 gem 'devise-jwt'
+gem 'pdf-reader'
 gem 'rack-cors'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'

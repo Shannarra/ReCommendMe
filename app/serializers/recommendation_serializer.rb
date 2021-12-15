@@ -3,7 +3,7 @@
 class RecommendationSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
 
-  attributes :id, :by, :updated_at, :cv
+  attributes :id, :by, :to, :updated_at, :send_now, :time_sent, :cv
 
   def updated_at
     object.updated_at.to_date
@@ -19,6 +19,10 @@ class RecommendationSerializer < ActiveModel::Serializer
             attr['name'] = attr.delete('filename')
             attr['size_b'] = attr.delete('byte_size')
           end
+  end
+
+  def time_sent
+    object.time_sent
   end
 
   def cv_url

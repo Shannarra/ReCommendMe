@@ -6,6 +6,14 @@ module User
 
     respond_to :json
 
+    def index
+      render json: current_user
+    end
+
+    def show
+      render json: current_user
+    end
+
     # GET /resource/sign_in
     # def new
     #   super
@@ -30,16 +38,24 @@ module User
 
     private
 
+    # rubocop:disable Metrics/MethodLength
     def respond_with(_res, *_opts)
       if current_user
         render json: {
-          message: 'Logged in'
+          message: 'Logged in',
+          token: current_token,
+          user: current_user
         }, status: :ok
       else
         render json: {
-          message: 'Log in first'
-        }, status: :ok
+          message: 'Access denied. Are you logged in with correct credentials?'
+        }, status: :unauthorized
       end
+    end
+    # rubocop:enable Metrics/MethodLength
+
+    def current_token
+      request.env['warden-jwt_auth.token']
     end
 
     def log_out_success

@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    Ascii85 (1.1.0)
     actioncable (6.1.4.1)
       actionpack (= 6.1.4.1)
       activesupport (= 6.1.4.1)
@@ -65,6 +66,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    afm (0.2.2)
     bcrypt (3.1.16)
     bootsnap (1.9.3)
       msgpack (~> 1.0)
@@ -97,6 +99,7 @@ GEM
     ffi (1.15.4)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    hashery (2.1.2)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     jsonapi-renderer (0.2.2)
@@ -118,6 +121,12 @@ GEM
     nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pdf-reader (2.7.0)
+      Ascii85 (~> 1.0)
+      afm (~> 0.2.1)
+      hashery (~> 2.0)
+      ruby-rc4
+      ttfunk
     pg (1.2.3)
     puma (5.5.2)
       nio4r (~> 2.0)
@@ -160,6 +169,7 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    ruby-rc4 (0.1.5)
     spring (3.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -169,6 +179,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     thor (1.1.0)
+    ttfunk (1.7.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     warden (1.2.9)
@@ -193,6 +204,7 @@ DEPENDENCIES
   devise
   devise-jwt
   listen (~> 3.3)
+  pdf-reader
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
