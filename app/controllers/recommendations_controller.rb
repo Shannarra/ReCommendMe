@@ -25,7 +25,9 @@ class RecommendationsController < ApplicationController
 
   def create
     recommendation = Recommendation.new(recommendation_params)
+    recommendation.user_id = current_user.id if recommendation.user_id.nil?
 
+    # TODO: Add a "comment" to the recommendation!
     if recommendation.save!
       @recommendation = recommendation
 
